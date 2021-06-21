@@ -1,0 +1,28 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: kamelet-aws-translate-action-ko
+  namespace: demo
+  labels:
+    app: kamelet-aws-translate-action
+    app.kubernetes.io/instance: kamelet-aws-translate-action
+    app.kubernetes.io/component: kamelet-aws-translate-action
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  source:
+    ref:
+      apiVersion: messaging.knative.dev/v1
+      kind: Channel
+      name: originaltxt
+  sink:
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: aws-translate-action
+    properties:
+      accessKey: YOU_KEY
+      region: us-east-1
+      secretKey: YOU_KEY
+      sourceLanguage: auto
+      targetLanguage: ko

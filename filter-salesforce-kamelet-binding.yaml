@@ -1,0 +1,30 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: filter-salesforce-txt-binding
+  namespace: demo
+  labels:
+    app: filter-salesforce-txt-binding
+    app.kubernetes.io/instance: filter-salesforce-txt-binding
+    app.kubernetes.io/component: filter-salesforce-txt-binding
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  integration:
+    traits:
+      service-binding:
+        configuration:
+          serviceBindings:
+          - rhoas.redhat.com/v1alpha1:KafkaConnection:kafka-summit-apac
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: managed-kafka-source
+    properties:
+      topic: salesforce-campaign
+  sink:
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: filter-salesforce-txt

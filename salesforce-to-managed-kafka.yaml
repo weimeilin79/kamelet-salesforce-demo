@@ -1,0 +1,30 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: salesforce-to-managed-kafka
+spec:
+  integration:
+    traits:
+      service-binding:
+        configuration:
+          serviceBindings:
+          - rhoas.redhat.com/v1alpha1:KafkaConnection:kafka-summit-apac
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: salesforce-source
+    properties:
+      clientId: "YOU_ID"
+      clientSecret: "YOU_KEY"
+      password: "YOUR_PWD"
+      query: "SELECT Id,Name FROM Campaign"
+      topicName: "CampaignTopic"
+      userName: "YOUR_USER"
+  sink:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: managed-kafka-sink
+    properties:
+      topic: salesforce-campaign

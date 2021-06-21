@@ -1,0 +1,35 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: Kamelet
+metadata:
+  name: managed-kafka-source
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGcgaWQ9Im91dGxpbmUiPjxjaXJjbGUgY3g9Ijg4IiBjeT0iMzY4IiByPSIxNiIvPjxjaXJjbGUgY3g9IjQxNiIgY3k9IjM2OCIgcj0iMTYiLz48cGF0aCBkPSJNMjMyLDMwNGgzMmE4LDgsMCwwLDAsMC0xNkgyMzJhOCw4LDAsMCwwLDAsMTZaIi8+PHBhdGggZD0iTTE1MiwyODhIMTIwYTgsOCwwLDAsMCwwLDE2aDMyYTgsOCwwLDAsMCwwLTE2WiIvPjxwYXRoIGQ9Ik0xNzYsMjA4aDMyYTgsOCwwLDAsMCwwLTE2SDE3NmE4LDgsMCwwLDAsMCwxNloiLz48cGF0aCBkPSJNNDg4LDMyMHMtLjAxNC03Mi41MTYtLjAzOS03Mi43NzFjLS4wMTEtLjExNC0zNS4wNy05Mi0zNS4wNy05MmEzMC4xOCwzMC4xOCwwLDAsMC0yOC0xOS4yM0gzNTZhMjcuODM4LDI3LjgzOCwwLDAsMC0xMiwyLjcwN1YxMTZhMjAuMDIzLDIwLjAyMywwLDAsMC0yMC0yMEg2MGEyMC4wMjMsMjAuMDIzLDAsMCwwLTIwLDIwdjEySDI0YTgsOCwwLDAsMCwwLDE2SDQwdjE2SDI0YTgsOCwwLDAsMCwwLDE2SDQwdjE2SDI0YTgsOCwwLDAsMCwwLDE2SDQwVjMyMEgyNGE4LDgsMCwwLDAtOCw4djMyYTgsOCwwLDAsMCw4LDhINDBhNDgsNDgsMCwwLDAsOTYsMEgzNjhhNDgsNDgsMCwwLDAsOTYsMGgyNGE4LDgsMCwwLDAsOC04VjMyOEE4LDgsMCwwLDAsNDg4LDMyMFpNNDIuNzUyLDM1MkgzMlYzMzZINTIuMjYxQTQ4LjA0NCw0OC4wNDQsMCwwLDAsNDIuNzUyLDM1MlpNODgsNDAwYTMyLDMyLDAsMSwxLDMyLTMyQTMyLjAzNiwzMi4wMzYsMCwwLDEsODgsNDAwWm0wLTgwVjI0MGgxNnYyNGE4LDgsMCwwLDAsOCw4aDQ4YTgsOCwwLDAsMCw4LThWMjQwaDE2djgwWm04MC0xNDRoNDhhOCw4LDAsMCwwLDgtOFYxNDRoMTZ2ODBIMTQ0VjE0NGgxNnYyNEE4LDgsMCwwLDAsMTY4LDE3NlptOC0xNlYxNDRoMzJ2MTZabTQ4LDExMmg0OGE4LDgsMCwwLDAsOC04VjI0MGgxNnY4MEgyMDBWMjQwaDE2djI0QTgsOCwwLDAsMCwyMjQsMjcyWm00MC0xNkgyMzJWMjQwaDMyWk0xNTIsMjQwdjE2SDEyMFYyNDBaTTMyOCwzNTJIMTMzLjI0OGE0OC4wNDQsNDguMDQ0LDAsMCwwLTkuNTA5LTE2SDMyOFptMC0xODhWMzIwSDMxMlYyMzJhOCw4LDAsMCwwLTgtOEgyNTZWMTM2YTgsOCwwLDAsMC04LThIMTM2YTgsOCwwLDAsMC04LDh2ODhIODBhOCw4LDAsMCwwLTgsOHY4OEg1NlYyMDhINzJhOCw4LDAsMCwwLDAtMTZINTZWMTc2SDg4YTgsOCwwLDAsMCwwLTE2SDU2VjE0NEg5NmE4LDgsMCwwLDAsMC0xNkg1NlYxMTZhNCw0LDAsMCwxLDQtNEgzMjRhNCw0LDAsMCwxLDQsNFptMTE4LjgxMywyMCwyMS41MzksNTZIMzc2VjE4NFpNMzcwLjc1MiwzNTJIMzQ0VjMzNmgzNi4yNjFBNDguMDQ0LDQ4LjA0NCwwLDAsMCwzNzAuNzUyLDM1MlpNMzQ0LDMyMFYxNjRhMTIuMDEzLDEyLjAxMywwLDAsMSwxMi0xMmg2OC44OTFhMTQuMDgxLDE0LjA4MSwwLDAsMSwxMy4wNjYsOC45NzVsMi43LDcuMDI1SDM2OGE4LDgsMCwwLDAtOCw4djcyYTgsOCwwLDAsMCw4LDhINDcydjMySDQ0OGE4LDgsMCwwLDAtNy4xNTUsNC40MjJMNDI3LjA1NiwzMjBabTcyLDgwYTMyLDMyLDAsMSwxLDMyLTMyQTMyLjAzNiwzMi4wMzYsMCwwLDEsNDE2LDQwMFptMjguOTQ0LTgwLDgtMTZINDcydjE2Wk00ODAsMzUySDQ2MS4yNDhhNDguMDQ0LDQ4LjA0NCwwLDAsMC05LjUwOS0xNkg0ODBaIi8+PHBhdGggZD0iTTQwMCwyNzJIMzc2YTgsOCwwLDAsMCwwLDE2aDI0YTgsOCwwLDAsMCwwLTE2WiIvPjwvZz48L3N2Zz4K"
+    camel.apache.org/provider: "Red Hat"
+  labels:
+    camel.apache.org/kamelet.type: "source"
+    camel.apache.org/kamelet.name: "managed-kafka-source"
+    camel.apache.org/kamelet.version: "v1alpha1"
+spec:
+  definition:
+    title: "Managed Kafka Source"
+    description: |-
+      Receive data from Managed Kafka topics.
+    required:
+      - topic
+    properties:
+      topic:
+        title: Topic names
+        description: Comma separated list of Kafka topic names
+        type: string
+  dependencies:
+  - mvn:org.apache.kafka:kafka-clients:2.6.0
+  flow:
+    from:
+      uri: "kafka:{{topic}}"
+      parameters:
+        brokers: "{{bootstrapServers}}"
+        securityProtocol: "{{securityProtocol}}"
+        saslMechanism: "{{saslMechanism}}"
+        saslJaasConfig: "org.apache.kafka.common.security.plain.PlainLoginModule required username='{{user}}' password='{{password}}';"
+      steps:
+      - to: "kamelet:sink"

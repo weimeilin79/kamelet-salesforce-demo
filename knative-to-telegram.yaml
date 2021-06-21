@@ -1,0 +1,25 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: kamelet-telegram-sink
+  namespace: demo
+  labels:
+    app: kamelet-telegram-sink
+    app.kubernetes.io/instance: kamelet-telegram-sink
+    app.kubernetes.io/component: kamelet-telegram-sink
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  source:
+    ref:
+      apiVersion: messaging.knative.dev/v1
+      kind: Channel
+      name: translatedtxt
+  sink:
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: telegram-sink
+    properties:
+      authorizationToken: YOU_TOKEN
+      chatId: 'YOU_ID'

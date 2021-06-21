@@ -1,0 +1,30 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: managed-kafka-to-channel
+  namespace: demo
+  labels:
+    app: managed-kafka-to-channel
+    app.kubernetes.io/instance: managed-kafka-to-channel
+    app.kubernetes.io/component: managed-kafka-to-channel
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  integration:
+    traits:
+      service-binding:
+        configuration:
+          serviceBindings:
+          - rhoas.redhat.com/v1alpha1:KafkaConnection:kafka-summit-apac
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: managed-kafka-source
+    properties:
+      topic: telegram-in
+  sink:
+    ref:
+      apiVersion: messaging.knative.dev/v1
+      kind: Channel
+      name: mychannel

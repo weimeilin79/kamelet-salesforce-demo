@@ -1,0 +1,22 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: filter-telegram-txt-binding
+  namespace: demo
+  labels:
+    app: filter-telegram-txt-binding
+    app.kubernetes.io/instance: filter-telegram-txt-binding
+    app.kubernetes.io/component: filter-telegram-txt-binding
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  source:
+    ref:
+      apiVersion: messaging.knative.dev/v1
+      kind: Channel
+      name: mychannel
+  sink:
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: filter-telegram-txt
