@@ -3,7 +3,7 @@
 This demo will use Kamelet to stream campaign creation events from Salesforce to a Kafka topic hosted by Red Hat. And translate the campaign title into multiple languages using AWS translate service. Lastly pushing the campaign to the end audience on Telegram.  
 ![Overview](images/overview.png)
 
-[!Video(images/youtube.png)](https://www.youtube.com/watch?v=onOlnEdOhfM)
+[![Video](images/youtube.png)](https://www.youtube.com/watch?v=onOlnEdOhfM)
 
 
 ### Prerequisites
